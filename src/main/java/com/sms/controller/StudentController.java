@@ -2,6 +2,7 @@ package com.sms.controller;
 
 import com.sms.entities.Student;
 import com.sms.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")
+@Slf4j
 public class StudentController {
 
     @Autowired
@@ -24,6 +26,7 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
+        log.info("Fetching all students");
         List<Student> students = studentService.getAllStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
